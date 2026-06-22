@@ -1,0 +1,144 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=VT323&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-title: "VT323", monospace;
+  --font-mono: "IBM Plex Mono", "Courier New", monospace;
+  --color-win-gray: #c0c0c0;
+  --color-win-panel: #d8d8d8;
+  --color-win-light: #ffffff;
+  --color-win-dark: #404040;
+  --color-win-title: #8f141f;
+  --color-retro-green: #35d15f;
+  --color-retro-blue: #000080;
+  --color-retro-yellow: #f7d44a;
+  --shadow-win: 2px 2px 0 #404040, -1px -1px 0 #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  font-family: var(--font-mono);
+  letter-spacing: 0;
+}
+
+button,
+a,
+input,
+textarea {
+  font: inherit;
+}
+
+.desktop {
+  background:
+    radial-gradient(circle at 28% 18%, rgba(255, 255, 255, 0.08), transparent 22%),
+    linear-gradient(135deg, #06291f 0%, #0f4a38 45%, #071f1a 100%);
+}
+
+.desktop::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.snow {
+  position: absolute;
+  inset: -20px 0 0;
+  pointer-events: none;
+  opacity: 0.55;
+  background-image:
+    radial-gradient(circle, #fff 1px, transparent 1px),
+    radial-gradient(circle, #fff 1px, transparent 1px);
+  background-position: 0 0, 45px 65px;
+  background-size: 120px 120px, 170px 170px;
+  animation: snow 18s linear infinite;
+}
+
+@keyframes snow {
+  from { transform: translateY(-40px); }
+  to { transform: translateY(120px); }
+}
+
+.win-window {
+  border: 2px solid #fff;
+  outline: 2px solid #404040;
+  background: #c0c0c0;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.35);
+}
+
+.win-window.maximized {
+  transform: none !important;
+}
+
+.win-button,
+.win-control {
+  border: 2px solid;
+  border-color: #fff #404040 #404040 #fff;
+  background: #c0c0c0;
+  color: #000;
+}
+
+.win-button:active,
+.win-button.pressed,
+.win-control:active {
+  border-color: #404040 #fff #fff #404040;
+  padding-top: calc(var(--pressed-pad-top, 0px) + 1px);
+}
+
+.win-control {
+  display: grid;
+  height: 20px;
+  width: 22px;
+  place-items: center;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.inset-panel {
+  border: 2px solid;
+  border-color: #404040 #fff #fff #404040;
+}
+
+.desktop-icon:focus-visible span:last-child,
+.win-button:focus-visible,
+.win-control:focus-visible,
+input:focus,
+textarea:focus {
+  outline: 2px dotted #000;
+  outline-offset: 2px;
+}
+
+@media (max-width: 760px) {
+  .win-window {
+    left: 8px !important;
+    top: 72px !important;
+    width: calc(100vw - 16px) !important;
+    height: calc(100vh - 124px) !important;
+    transform: none !important;
+  }
+
+  .desktop {
+    overflow-y: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
