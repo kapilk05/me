@@ -21,7 +21,7 @@ export function HeroApp() {
         <p className="inset-panel bg-white p-3">{portfolio.summary}</p>
         <div className="flex flex-wrap gap-2">
           <button className="win-button px-4 py-2" onClick={() => open("projects")}>View Projects</button>
-          <a className="win-button px-4 py-2" href={portfolio.resumeUrl} target="_blank">Download Resume</a>
+          <a className="win-button px-4 py-2" href={portfolio.resumeUrl} target="_blank" rel="noreferrer">Download Resume</a>
           <button className="win-button px-4 py-2" onClick={() => open("contact")}>Contact Me</button>
         </div>
       </div>
@@ -82,8 +82,8 @@ export function ProjectsApp() {
               <p className="mb-3 text-sm">{project.description}</p>
               <div className="mb-3 flex flex-wrap gap-1">{project.techStack.map((tech) => <span className="border border-win-dark bg-win-panel px-1 text-xs" key={tech}>{tech}</span>)}</div>
               <div className="flex gap-2">
-                {"liveLink" in project && project.liveLink && <a className="win-button px-2 py-1 text-xs" href={project.liveLink} target="_blank">Live</a>}
-                {"githubLink" in project && project.githubLink && <a className="win-button px-2 py-1 text-xs" href={project.githubLink} target="_blank">GitHub</a>}
+                {"liveLink" in project && project.liveLink && <a className="win-button px-2 py-1 text-xs" href={project.liveLink} target="_blank" rel="noreferrer">Live</a>}
+                {"githubLink" in project && project.githubLink && <a className="win-button px-2 py-1 text-xs" href={project.githubLink} target="_blank" rel="noreferrer">GitHub</a>}
               </div>
             </article>
           ))}
@@ -98,14 +98,21 @@ export function ExperienceApp() {
   return (
     <div className="grid gap-3">
       {portfolio.experience.map((role) => (
-        <section key={`${role.company}-${role.title}`} className="inset-panel bg-white p-3">
+        <section key={`${role.company}-${role.role}`} className="inset-panel bg-white p-3">
           <div className="mb-2 flex flex-wrap justify-between gap-2">
-            <h3 className="font-title text-3xl text-win-title">{role.title}</h3>
-            <span className="font-bold">{role.period}</span>
+            {/* FIXED: Changed from role.title to role.role */}
+            <h3 className="font-title text-3xl text-win-title">{role.role}</h3>
+            {/* FIXED: Changed from role.period to role.duration */}
+            <span className="font-bold">{role.duration}</span>
           </div>
           <p className="font-bold">{role.company}</p>
           <p className="mb-2">{role.description}</p>
-          <ul className="list-disc space-y-1 pl-5">{role.details.map((detail) => <li key={detail}>{detail}</li>)}</ul>
+          {/* FIXED: Changed from role.details to role.details with optional chaining handle safeguard */}
+          <ul className="list-disc space-y-1 pl-5">
+            {role.details?.map((detail) => (
+              <li key={detail}>{detail}</li>
+            ))}
+          </ul>
         </section>
       ))}
       <section className="inset-panel bg-white p-3">
@@ -137,7 +144,7 @@ export function ResumeApp() {
     <div className="flex h-full flex-col gap-3">
       <div className="flex gap-2">
         <a className="win-button px-3 py-2" href={portfolio.resumeUrl} download>Download</a>
-        <a className="win-button px-3 py-2" href={portfolio.resumeUrl} target="_blank">Open New Tab</a>
+        <a className="win-button px-3 py-2" href={portfolio.resumeUrl} target="_blank" rel="noreferrer">Open New Tab</a>
       </div>
       <iframe className="inset-panel min-h-96 flex-1 bg-white" src={portfolio.resumeUrl} title="Kapil Kashyap resume preview" />
     </div>
@@ -166,15 +173,16 @@ export function ContactApp() {
     }
   };
   return (
-    <div className="grid gap-4 md:grid-cols-[240px_1fr]">
-      <aside className="inset-panel bg-white p-3">
+    // FIXED: Upgraded width boundary assignment grid footprint from [240px_1fr] to [340px_1fr]
+    <div className="grid gap-4 md:grid-cols-[340px_1fr]">
+      <aside className="inset-panel bg-white p-3 select-text">
         <h3 className="mb-3 font-bold">Ways to Connect</h3>
-        <p>{portfolio.contact.email}</p>
-        <p>{portfolio.contact.workEmail}</p>
+        <p className="break-all">{portfolio.contact.email}</p>
+        <p className="break-all">{portfolio.contact.workEmail}</p>
         <p>{portfolio.contact.phone}</p>
         <p>{portfolio.contact.location}</p>
-        <a className="mt-3 block text-retro-blue underline" href={portfolio.socials.linkedin} target="_blank">LinkedIn</a>
-        <a className="block text-retro-blue underline" href={portfolio.socials.github} target="_blank">GitHub</a>
+        <a className="mt-3 block text-retro-blue underline" href={portfolio.socials.linkedin} target="_blank" rel="noreferrer">LinkedIn</a>
+        <a className="block text-retro-blue underline" href={portfolio.socials.github} target="_blank" rel="noreferrer">GitHub</a>
       </aside>
       <form ref={form} onSubmit={submit} className="inset-panel grid gap-2 bg-white p-3">
         {["name", "email", "subject"].map((field) => (
@@ -193,7 +201,7 @@ export function InternetApp() {
     <div className="space-y-3">
       <div className="inset-panel bg-white px-2 py-1">Address: https://kapilkashyap.netlify.app/links</div>
       {[portfolio.socials.github, portfolio.socials.linkedin, portfolio.socials.codechef, portfolio.socials.leetcode].map((link) => (
-        <a className="block border border-win-dark bg-white p-3 text-retro-blue underline" href={link} target="_blank" key={link}>{link}</a>
+        <a className="block border border-win-dark bg-white p-3 text-retro-blue underline" href={link} target="_blank" key={link} rel="noreferrer">{link}</a>
       ))}
     </div>
   );

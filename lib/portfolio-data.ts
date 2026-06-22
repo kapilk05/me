@@ -36,54 +36,82 @@ export const portfolio = {
   ],
   experience: [
     {
-      title: "Cofounder & CTO",
+      company: "Indus Valley Partners",
+      role: "Associate Software Engineer",
+      duration: "April 2026 - Present",
+      description: "A premier global provider of specialized technology and data solutions to the alternative asset management industry.",
+      technologies: ["Python", "Decision Trees", "LLMs", "AMP", "Email Integrations"],
+      details: [
+        "Built and owned the development of a deterministic, two-stage Recon Break Classifier end-to-end using a Decision Tree for immediate high-confidence predictions and an LLM fallback for complex edge cases[cite: 10].",
+        "Engineered an Auto Rule Discovery engine to automatically surface and match new reconciliation rules with ≥75% occurrence frequency in breaks, drastically lowering manual analyst triage efforts[cite: 11].",
+        "Integrated AMP (Accelerated Mobile Pages) components directly into automated email notifications, enabling quick rule acceptance from the inbox and cutting down routine dashboard logins[cite: 12].",
+        "Appointed as an active research Reviewer for the International Journal of Informatics and Communication Technology[cite: 13]."
+      ]
+    },
+    {
       company: "Wedora",
-      period: "August 2025 - Present",
-      description: "Co-founded Wedora and led the technology vision, building scalable web solutions and managing the engineering team.",
+      role: "Cofounder & CTO",
+      duration: "August 2025 - Present",
+      description: "A next-generation collaborative platform bringing automated agent architectures to consumer and enterprise solutions.",
+      technologies: ["React.js", "Node.js", "AWS", "Python", "FastAPI", "Generative AI"],
       details: [
-        "Architected and launched Wedora's core platform.",
-        "Oversaw a team of developers, ensuring timely delivery and high code quality.",
-        "Integrated modern tech stack including React, Node.js, and cloud services.",
-        "Managed a team of 3 backend developers and 2 AI developers to build the AI Agent for the platform."
+        "Architected, bootstrapped, and successfully launched Wedora's core platform blueprint from the ground up, enforcing clean architecture patterns.",
+        "Directly lead and manage a high-performing engineering squad consisting of 3 backend developers and 2 AI engineers.",
+        "Spearheaded the design and deployment of an autonomous AI Agent framework built to streamline complex context parsing and multi-tenant logic.",
+        "Established rigid technical vision, rigorous CI/CD structures, automated code quality checks, and optimal AWS provisioning to ensure 99.9% application uptime."
       ]
     },
     {
-      title: "Software Developer",
       company: "Skima AI",
-      period: "July 2025 - Present",
-      description: "Backend Ruby on Rails developer. Star Employee Award - September 2025.",
+      role: "Software Development Engineer I (SDE-1)",
+      duration: "July 2025 - March 2026",
+      description: "An AI-driven recruitment and talent intelligence platform optimizing enterprise hiring workflows.",
+      technologies: ["Ruby on Rails", "React.js", "AWS", "RabbitMQ", "Capistrano", "ElevenLabs", "Unified.to", "Knit ATS", "GitHub Actions"],
       details: [
-        "Optimized backend performance to under 250ms response time.",
-        "Centralized batch statistics into a reusable Rails service.",
-        "Integrated Notion and Zapier automations.",
-        "Designed Notification Center system from scratch.",
-        "Integrated Unified.to and Knit ATS APIs for automating ATS integration workflows."
+        "Owned CareerfitAI end-to-end development, deployment, and operational maintenance for 25+ enterprise users while monitoring AWS infrastructure, RabbitMQ queues, and Hutch consumers[cite: 19].",
+        "Architected and scaled an AI Video Interview System leveraging ElevenLabs voice agents to process 40,000 applications and manage 1,000+ total interviews with up to 50 simultaneous parallel sessions for L&T[cite: 20, 21].",
+        "Reduced critical API response runtimes from 25 seconds down to 400-500ms (a 98% latency improvement) via intense query tuning, code refactoring, and materialized views over 1M+ records[cite: 25].",
+        "Integrated 5 major ATS platforms (BambooHR, Ashby, Lever, RecruitCRM, Unified.to, Knit) via custom bidirectional APIs to sync 1M+ candidates, 25K+ jobs, and 500K+ applications[cite: 23].",
+        "Built a Service ARM data-scraping layer using human-like web automation and Cron synchronization loops to map entities from systems without external API access[cite: 24].",
+        "Enforced enterprise security policies by developing a session-intercepting mandatory MFA system with TOTP verification, QR flows, and automated lockouts via the device-two-factor gem[cite: 26].",
+        "Designed and shipped automated CI/CD deployment pipelines using GitHub Actions, eliminating manual configurations and compressing release cycle times[cite: 27].",
+        "Co-developed SKIMA-BOT using GPT-4o Mini and Grok to provide natural language search, updates, and status toggles, and onboarded/mentored 2 junior engineers[cite: 28, 29].",
+        "Honored with the 'Star Employee of the Month' award in September 2025 for exceptional contributions to backend scaling and features[cite: 16]."
       ]
     },
     {
-      title: "Web Developer",
-      company: "Suvidha Foundation",
-      period: "June 2024 - July 2024",
-      description: "Built efficient, low-latency campaign APIs using Spring Boot and MongoDB aggregation pipelines.",
-      details: ["Used Redis caching for hot queries.", "Delivered performance-focused React components.", "Documented weekly metrics and improvements."]
-    },
-    {
-      title: "Teaching Assistant",
       company: "Dwarkadas J. Sanghvi College of Engineering",
-      period: "August 2024 - May 2025",
-      description: "Assisted in core courses: Processor Architecture and Information Security.",
-      details: ["Created structured lecture materials.", "Supported 100+ students with one-to-one guidance.", "Facilitated understanding of advanced topics."]
+      role: "Teaching Assistant",
+      duration: "August 2024 - May 2025",
+      description: "A leading tier-1 engineering institute focused on academic rigor and technical research innovation.",
+      technologies: ["Processor Architecture", "Information Security", "Curriculum Design", "Mentoring"],
+      details: [
+        "Supported classroom and laboratory instruction for 80+ engineering students in Processor Architecture & Organization and Information Security courses[cite: 31, 33].",
+        "Authored over 15+ well-structured technical review notes and interactive slide presentations to facilitate complex engineering topics[cite: 33].",
+        "Provided dedicated 1-on-1 performance mentorship to undergraduate students, driving an average 20% improvement in baseline course test scores[cite: 34]."
+      ]
     },
     {
-      title: "Founders Office Intern",
-      company: "ParkIt.biz",
-      period: "June 2023 - August 2023",
-      description: "Generated leads, conducted market research, and fostered partnerships.",
+      company: "Suvidha Foundation",
+      role: "Web Developer Intern",
+      duration: "June 2024 - July 2024",
+      description: "A non-profit organization dedicated to democratizing access to education and financial aid through tech-enabled campaigns.",
+      technologies: ["React.js", "Component Architecture", "State Management", "Web Vitals Optimization"],
       details: [
-        "Conducted market analysis to identify growth opportunities.",
-        "Generated revenue leads through targeted outreach campaigns and raised 1.5 lakhs in potential business.",
-        "Managed attendance and payroll for other interns.",
-        "Searched for potential tenders that could aid company growth."
+        "Designed and built highly responsive web application experiences for organizational funding campaigns, driving up user engagement metrics by 25%[cite: 38].",
+        "Refactored front-end modules using React.js component design methodologies, managing client states smoothly while implementing Core Web Vitals telemetry[cite: 39].",
+        "Successfully optimized system bundle size and media delivery pipelines to decrease web load time latencies by 30%[cite: 39]."
+      ]
+    },
+    {
+      company: "ParkIt.biz",
+      role: "Founders Office Intern",
+      duration: "June 2023 - August 2023",
+      description: "A tech-forward smart parking operator automating commercial and residential asset logistics.",
+      technologies: ["Data Analytics", "Lead Generation", "Campaign Management", "Workflow Optimization"],
+      details: [
+        "Executed targeted lead generation campaigns through social media channels, resulting in a 60% increase in engagement rates; analyzed campaign performance metrics to refine future strategies and optimize outreach efforts.",
+        "Partnered with the HR department to optimize recruitment workflows and boost employee engagement, driving organizational growth and efficiency."
       ]
     }
   ],
