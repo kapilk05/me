@@ -61,7 +61,6 @@ export default function PortfolioOS() {
   const [menu, setMenu] = useState<{ x: number; y: number } | null>(null);
   const { windows, openAll, closeAll, minimize } = useWindowStore();
 
-  // Dynamic log stream state lines
   const [logs, setLogs] = useState<string[]>([]);
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -87,7 +86,6 @@ export default function PortfolioOS() {
       }
     }, 600);
 
-    // Bails out entirely out of boot state after 5 seconds
     const bootTimer = setTimeout(() => {
       setBooting(false);
     }, 5000);
@@ -98,14 +96,15 @@ export default function PortfolioOS() {
     };
   }, [booting]);
 
-  // 2. Self-Correcting AI Autoplay Snake Subsystem Engine
+  // 2. FIXED: Self-Correcting AI Autoplay Snake Subsystem Engine
   useEffect(() => {
-    if (!booting || !canvasRef.current) return;
+    if (!booting) return;
+    
     const canvas = canvasRef.current;
-    if (!canvas) return;
+    if (!canvas) return; // Guard 1: Verify canvas exists in DOM
 
     const ctx = canvas.getContext("2d");
-    if (!ctx) return; 
+    if (!ctx) return; // Guard 2: Verify drawing context is not null (Fixes Vercel Build Error)
 
     const grid = 16;
     let count = 0;
@@ -129,29 +128,32 @@ export default function PortfolioOS() {
     function gameLoop() {
       animationFrameId = requestAnimationFrame(gameLoop);
 
-      // Runs at a locked retro frame velocity tick calculation speed
-      if (++count < 6) return;
+      // Balanced rendering speed multiplier (Fixes early stuttering)
+      if (++count < 4) return;
       count = 0;
 
+      if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-      // Basic pathfinding logic to route the head target to coordinate coordinates
       const head = snake[0];
+      
+      // Free Pathfinding AI Calculations (No rigid wall restraints)
       if (head.x < food.x && dx !== -grid) { dx = grid; dy = 0; }
       else if (head.x > food.x && dx !== grid) { dx = -grid; dy = 0; }
       else if (head.y < food.y && dy !== -grid) { dx = 0; dy = grid; }
       else if (head.y > food.y && dy !== grid) { dx = 0; dy = -grid; }
 
-      // Special collision bypass condition check so it turns safely to clear inside grid limits
       let nextX = head.x + dx;
       let nextY = head.y + dy;
-      if (nextX < 0 || nextX >= canvas.width || nextY < 0 || nextY >= canvas.height) {
-        if (dx !== 0) { dx = 0; dy = head.y < canvas.height / 2 ? grid : -grid; }
-        else { dy = 0; dx = head.x < canvas.width / 2 ? grid : -grid; }
-      }
 
-      // Progress snake body positioning movement array sequence mapping updates
-      const newHead = { x: head.x + dx, y: head.y + dy };
+      // Wrap-around screen bounds calculations
+      if (nextX < 0) nextX = canvas.width - grid;
+      else if (nextX >= canvas.width) nextX = 0;
+
+      if (nextY < 0) nextY = canvas.height - grid;
+      else if (nextY >= canvas.height) nextY = 0;
+
+      const newHead = { x: nextX, y: nextY };
       snake.unshift(newHead);
 
       if (newHead.x === food.x && newHead.y === food.y) {
@@ -168,16 +170,16 @@ export default function PortfolioOS() {
       ctx.fill();
 
       // Draw Retro Green Snake Entity body tokens
-      ctx.fillStyle = "#4ade80";
       snake.forEach((cell, index) => {
-        ctx.fillStyle = index === 0 ? "#22c55e" : "#4ade80"; // Slightly darker head block node
+        ctx.fillStyle = index === 0 ? "#22c55e" : "#4ade80"; 
         ctx.fillRect(cell.x, cell.y, grid - 1, grid - 1);
       });
     }
 
     animationFrameId = requestAnimationFrame(gameLoop);
     return () => cancelAnimationFrame(animationFrameId);
-  }, [booting, logs]);
+    // Removed dependency array variants to guarantee clean render loop runtime stability
+  }, [booting]);
 
   // FEATURE 3: Intercept physical hardware Windows/Cmd Key to toggle Start Menu drawer layout state
   useEffect(() => {
@@ -236,7 +238,6 @@ export default function PortfolioOS() {
     >
       <div className="snow" aria-hidden="true" />
       
-      {/* INITIAL BOOT CONTAINER WITH AI SNAKE & DYNAMIC RUN LOGS */}
       {booting && (
         <div className="fixed inset-0 z-[10000] flex flex-col items-center justify-center bg-black font-mono text-retro-green p-4 select-none">
           <div className="w-[min(540px,95vw)] space-y-4">
