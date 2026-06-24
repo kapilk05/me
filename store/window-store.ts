@@ -23,7 +23,9 @@ const titles: Record<AppId, string> = {
   minesweeper: "Minesweeper",
   paint: "Paint",
   calculator: "Calculator",
-  notepad: "Untitled - Notepad"
+  notepad: "Untitled - Notepad",
+  blogs: "My Blogs - WordPad",
+  achievements: "Achievements - Registry Editor"
 };
 
 type Store = {
