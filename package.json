@@ -12,6 +12,7 @@
     "@emailjs/browser": "^4.4.1",
     "framer-motion": "^12.23.26",
     "next": "^15.5.9",
+    "re-resizable": "^6.11.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "react-draggable": "^4.5.0",
